@@ -6,9 +6,8 @@ The project follows **modern web development practices** and is fully deployed.
 ---
 
 ## 🚀 Live Demo
+- https://natours-app-mocha.vercel.app  
 
-- **Frontend (Vercel)**: https://natours-app-mocha.vercel.app  
-- **Backend API (Render)**: https://natours-app-7kz5.onrender.com  
 
 ---
 
@@ -89,29 +88,3 @@ The project follows **modern web development practices** and is fully deployed.
 - **XSS protection**
 - Secure HTTP headers via **Helmet**
 - Proper CORS configuration for production
-
----
-
-## 📸 Screenshots
-
-> Below are screenshots showcasing key features of the application.
-
-### 🏠 Home – All Tours
-![Home Page](screenshots/home.png)
-
-### 🗺 Tour Details & Map View
-![Tour Details](screenshots/tour-details.png)
-
-### 🔐 Authentication
-![Login Page](screenshots/login.png)
-
-### 👤 User Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### 🔑 Password Reset
-![Reset Password](screenshots/reset-password.png)
-
----
-
-## 📦 Project Structure
-
