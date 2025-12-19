@@ -10,10 +10,7 @@ app.set('query parser', 'extended');
 import connectDb from './db/createDb.js';
 
 // mongodb
-const DB = process.env.DATABASE.replace(
-  '<db_password>',
-  process.env.DATABASE_PASSWORD
-);
+const DB = process.env.DATABASE
 
 connectDb(DB)
 
