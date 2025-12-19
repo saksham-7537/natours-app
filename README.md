@@ -1,145 +1,117 @@
-🌍 Natours – Full Stack Tour Booking Application
+# 🌍 Natours – Full Stack Tour Booking Application
 
-Natours is a full-stack MERN application that allows users to explore tours, view locations on interactive maps, manage accounts, and book tours securely.
-The project is built with modern web technologies, follows best practices, and is fully deployed.
+Natours is a **full-stack MERN application** that allows users to explore tours, view locations on interactive maps, manage accounts, and securely authenticate.  
+The project follows **modern web development practices** and is fully deployed.
 
-🚀 Live Demo :
-https://natours-app-mocha.vercel.app
+---
 
-🛠 Tech Stack
-Frontend
+## 🚀 Live Demo
 
-React (Vite)
+- **Frontend (Vercel)**: https://natours-app-mocha.vercel.app  
+- **Backend API (Render)**: https://natours-app-7kz5.onrender.com  
 
-Zustand – state management
+---
 
-Axios – API communication
+## 🛠 Tech Stack
 
-Leaflet – interactive maps
+### Frontend
+- **React (Vite)**
+- **Zustand** – state management
+- **Axios** – API communication
+- **Leaflet** – interactive maps
+- **CSS (BEM architecture)**
 
-CSS (BEM architecture)
+### Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB + Mongoose**
+- **JWT Authentication**
+- **Multer & Sharp** – image uploads
+- **Helmet, Rate Limiting, Data Sanitization**
 
-Backend
+### Deployment
+- **Frontend**: Vercel
+- **Backend**: Render
+- **Database**: MongoDB Atlas
 
-Node.js
+---
 
-Express.js
+## ✨ Core Features
 
-MongoDB + Mongoose
+### 🌍 Tours
+- Browse all available tours
+- Detailed tour pages with:
+  - Duration, difficulty, price
+  - Description & highlights
+  - Interactive map with tour route
 
-JWT Authentication
+### 🗺 Interactive Maps
+- Tour locations rendered using **Leaflet**
+- Custom markers & route paths
+- Smooth zoom & pan animations
+- Automatically fits bounds to tour route
 
-Multer & Sharp – image uploads
+---
 
-Deployment
+## 🔐 Authentication & Authorization
 
-Frontend: Vercel
+- User **signup & login**
+- **JWT-based authentication**
+- Secure cookies (`httpOnly`, `sameSite`, `secure`)
+- Persistent login across refresh
+- Protected routes
 
-Backend: Render
+---
 
-Database: MongoDB Atlas
+## 👤 User Account Management
 
-✨ Core Features
-🌍 Tours
+- User dashboard
+- Update name & email
+- Upload & update profile photo
+- Change password securely
+- Logout functionality
 
-View all available tours
+---
 
-Detailed tour pages with:
+## 🔑 Password Recovery
 
-Description
+- Forgot password flow
+- Email-based password reset link
+- Secure token-based password reset
 
-Duration, difficulty, price
+---
 
-Locations displayed on interactive maps
+## 🛡 Security Features
 
-Route visualization with markers and paths
+- Password hashing with **bcrypt**
+- **Rate limiting** against brute force attacks
+- **NoSQL injection protection**
+- **XSS protection**
+- Secure HTTP headers via **Helmet**
+- Proper CORS configuration for production
 
-🗺 Interactive Maps
+---
 
-Tour locations displayed using Leaflet
+## 📸 Screenshots
 
-Custom map markers
+> Below are screenshots showcasing key features of the application.
 
-Connected route paths
+### 🏠 Home – All Tours
+![Home Page](screenshots/home.png)
 
-Smooth animations and zoom-to-bounds
+### 🗺 Tour Details & Map View
+![Tour Details](screenshots/tour-details.png)
 
-🔐 Authentication & Authorization
+### 🔐 Authentication
+![Login Page](screenshots/login.png)
 
-User signup & login
+### 👤 User Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-JWT-based authentication
+### 🔑 Password Reset
+![Reset Password](screenshots/reset-password.png)
 
-Secure cookies (httpOnly, sameSite, secure)
+---
 
-Persistent login (stay logged in on refresh)
+## 📦 Project Structure
 
-Role-based access control
-
-👤 User Account Management
-
-View personal dashboard
-
-Update name and email
-
-Upload & update profile photo
-
-Secure password change
-
-Logout functionality
-
-🔑 Password Recovery
-
-Forgot password functionality
-
-Email-based password reset link
-
-Secure token-based password reset flow
-
-🛡 Security Features
-
-Password hashing with bcrypt
-
-Rate limiting to prevent abuse
-
-MongoDB sanitization (NoSQL injection protection)
-
-XSS protection
-
-Secure HTTP headers via Helmet
-
-CORS configured for production deployment
-
-📦 Project Structure
-NATOURS/
-│
-├── backend/
-│   ├── controllers/
-│   ├── routes/
-│   ├── models/
-│   ├── utils/
-│   ├── db/
-│   ├── index.js
-│   └── server.js
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── store/
-│   │   └── utils/
-│   └── index.html
-│
-└── README.md
-
-🧪 Local Development
-Backend
-cd backend
-npm install
-npm run start:dev
-
-Frontend
-cd frontend
-npm install
-npm run dev
