@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -8,7 +8,7 @@ const ResetPassword = () => {
 
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [alert, setAlert] = useState(null)
+  const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const showAlert = (type, message) => {
@@ -18,38 +18,48 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== passwordConfirm) {
       showAlert('error', 'Passwords do not match');
       return;
     }
+
     setLoading(true);
 
     try {
-      const res = await axios.patch(
-        `http://localhost:8000/api/v1/users/resetPassword/${token}`,
-        { password, passwordConfirm },
-        { withCredentials: true }
+      const res = await api.patch(
+        `/users/resetPassword/${token}`,
+        { password, passwordConfirm }
       );
 
       if (res.data.status === 'success') {
         showAlert('success', 'Password reset successfully!');
-        setTimeout(() => navigate('/users/login'), 1500)
+        setTimeout(() => navigate('/users/login'), 1500);
       }
     } catch (error) {
-      console.log(error);
-      showAlert('error', error.response?.data?.message || 'Reset failed');
+      console.error(error);
+      showAlert(
+        'error',
+        error.response?.data?.message || 'Reset failed'
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
   return (
     <main className="main">
       {alert && (
-        <div className={`alert alert--${alert.type}`}>{alert.message}</div>
+        <div className={`alert alert--${alert.type}`}>
+          {alert.message}
+        </div>
       )}
+
       <div className="login-form">
-        <h2 className="heading-secondary ma-bt-lg">Reset your password</h2>
+        <h2 className="heading-secondary ma-bt-lg">
+          Reset your password
+        </h2>
+
         <form className="form form--login" onSubmit={handleSubmit}>
           <div className="form__group">
             <label className="form__label" htmlFor="password">
@@ -68,7 +78,10 @@ const ResetPassword = () => {
           </div>
 
           <div className="form__group ma-bt-md">
-            <label className="form__label" htmlFor="passwordConfirm">
+            <label
+              className="form__label"
+              htmlFor="passwordConfirm"
+            >
               Confirm Password
             </label>
             <input
@@ -79,13 +92,17 @@ const ResetPassword = () => {
               required
               minLength="8"
               value={passwordConfirm}
-              onChange={(e) => setPasswordConfirm(e.target.value)}
+              onChange={(e) =>
+                setPasswordConfirm(e.target.value)
+              }
             />
           </div>
 
           <div className="form__group">
             <button className="btn btn--green" disabled={loading}>
-              {loading ? 'Resetting Password...' : 'Reset Password'}
+              {loading
+                ? 'Resetting Password...'
+                : 'Reset Password'}
             </button>
           </div>
         </form>

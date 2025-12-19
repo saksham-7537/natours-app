@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import useAuthStore from '../store/authStore';
+import api from '../services/api';
 
 const Dashboard = () => {
   const { user, checkAuth } = useAuthStore();
@@ -44,7 +44,7 @@ const Dashboard = () => {
     if (photo) form.append('photo', photo);
 
     try {
-      await axios.patch('http://localhost:8000/api/v1/users/updateMe', form, {
+      await api.patch('/users/updateMe', form, {
         withCredentials: true,
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -64,12 +64,10 @@ const Dashboard = () => {
     setPasswordStatus({ loading: true, error: '', success: '' });
 
     try {
-      const res = await axios.patch(
-        'http://localhost:8000/api/v1/users/updateMyPassword',
+      const res = await api.patch(
+        '/users/updateMyPassword',
         passwordData,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
 
       if (res.data.status === 'success') {
@@ -85,10 +83,10 @@ const Dashboard = () => {
         });
       }
     } catch (err) {
-      console.log(err);
       setPasswordStatus({
         loading: false,
-        error: err.response?.data?.message || 'Failed to update password',
+        error:
+          err.response?.data?.message || 'Failed to update password',
         success: '',
       });
     }
@@ -113,7 +111,10 @@ const Dashboard = () => {
       <div className="user-view__content">
         <div className="user-view__form-container">
           {/* User Info Form */}
-          <h2 className="heading-secondary ma-bt-md">Your account settings</h2>
+          <h2 className="heading-secondary ma-bt-md">
+            Your account settings
+          </h2>
+
           {message && <p className="form__error">{message}</p>}
 
           <form className="form form-user-data" onSubmit={handleSubmit}>
@@ -152,7 +153,7 @@ const Dashboard = () => {
                   preview
                     ? preview
                     : user?.photo
-                    ? `http://localhost:8000/img/users/${user.photo}`
+                    ? `${import.meta.env.VITE_API_URL}/img/users/${user.photo}`
                     : '/img/users/default.jpg'
                 }
                 alt="User"
@@ -194,7 +195,10 @@ const Dashboard = () => {
             onSubmit={handleUpdatePasswordSubmit}
           >
             <div className="form__group">
-              <label className="form__label" htmlFor="password-current">
+              <label
+                className="form__label"
+                htmlFor="password-current"
+              >
                 Current password
               </label>
               <input
@@ -227,13 +231,19 @@ const Dashboard = () => {
                 required
                 value={passwordData.password}
                 onChange={(e) =>
-                  setPasswordData({ ...passwordData, password: e.target.value })
+                  setPasswordData({
+                    ...passwordData,
+                    password: e.target.value,
+                  })
                 }
               />
             </div>
 
             <div className="form__group">
-              <label className="form__label" htmlFor="password-confirm">
+              <label
+                className="form__label"
+                htmlFor="password-confirm"
+              >
                 Confirm password
               </label>
               <input

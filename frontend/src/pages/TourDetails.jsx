@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchTour } from '../services/api.js';
+import { fetchTour } from '../services/tourServices.js';
 import L from 'leaflet';
 
 const TourDetails = () => {

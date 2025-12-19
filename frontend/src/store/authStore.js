@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from 'axios';
+import api from '../services/api';
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -10,19 +10,14 @@ const useAuthStore = create((set) => ({
   // Check auth status on initial load
   checkAuth: async () => {
     try {
-      const res = await axios.get(
-        'http://localhost:8000/api/v1/users/isLoggedIn',
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await api.get('/users/isLoggedIn');
+
       set({
         user: res.data.data.user,
         isAuthenticated: res.data.isAuthenticated,
         loading: false,
       });
     } catch (error) {
-      console.log(error);
       set({
         user: null,
         isAuthenticated: false,
@@ -35,11 +30,11 @@ const useAuthStore = create((set) => ({
   login: async (email, password) => {
     try {
       set({ loading: true, error: null });
-      const res = await axios.post(
-        'http://localhost:8000/api/v1/users/login',
-        { email, password },
-        { withCredentials: true }
-      );
+
+      const res = await api.post('/users/login', {
+        email,
+        password,
+      });
 
       if (res.data.status === 'success') {
         set({
@@ -50,7 +45,9 @@ const useAuthStore = create((set) => ({
         return { success: true };
       }
     } catch (err) {
-      const errorMsg = err.response?.data?.message || 'Login failed';
+      const errorMsg =
+        err.response?.data?.message || 'Login failed';
+
       set({ error: errorMsg, loading: false });
       return { success: false, error: errorMsg };
     }
@@ -59,13 +56,7 @@ const useAuthStore = create((set) => ({
   // Logout handler
   logout: async () => {
     try {
-      await axios.post(
-        'http://localhost:8000/api/v1/users/logout',
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      await api.post('/users/logout');
       set({
         user: null,
         isAuthenticated: false,

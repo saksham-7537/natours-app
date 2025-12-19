@@ -1,16 +1,8 @@
-const API_URL = "http://localhost:8000/api/v1";
+import axios from 'axios';
 
-const fetchTours = async () => { 
-  const res = await fetch(`${API_URL}/tours`);
-  if (!res.ok) throw new Error("could not fetch tours");
-  const data = await res.json();
-  return data.data.tours;
-};
+const api = axios.create({
+  baseURL: `${import.meta.env.VITE_API_URL}/api/v1`,
+  withCredentials: true,
+});
 
-const fetchTour = async (slug) => {
-  const res = await fetch(`${API_URL}/tours/slug/${slug}`);
-  const json = await res.json();
-  return json.data.tour;
-};
-
-export { fetchTours, fetchTour };
+export default api;

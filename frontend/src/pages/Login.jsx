@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useAuthStore from '../store/authStore';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -34,12 +34,10 @@ const Login = () => {
     }
 
     try {
-      await axios.post('http://localhost:8000/api/v1/users/forgotPassword', {
-        email,
-      });
+      await api.post('/users/forgotPassword', { email });
       showAlert('success', 'Password reset link sent to your email!');
     } catch (err) {
-      console.log(err)
+      console.error(err);
       showAlert('error', 'Failed to send reset link');
     }
   };
@@ -47,14 +45,21 @@ const Login = () => {
   return (
     <main className="main">
       {alert && (
-        <div className={`alert alert--${alert.type}`}>{alert.message}</div>
+        <div className={`alert alert--${alert.type}`}>
+          {alert.message}
+        </div>
       )}
 
       <div className="login-form">
-        <h2 className="heading-secondary ma-bt-lg">Log into your account</h2>
+        <h2 className="heading-secondary ma-bt-lg">
+          Log into your account
+        </h2>
+
         <form className="form form--login" onSubmit={handleSubmit}>
           <div className="form__group">
-            <label className="form__label" htmlFor="email">Email address</label>
+            <label className="form__label" htmlFor="email">
+              Email address
+            </label>
             <input
               className="form__input"
               id="email"
@@ -67,7 +72,9 @@ const Login = () => {
           </div>
 
           <div className="form__group ma-bt-md">
-            <label className="form__label" htmlFor="password">Password</label>
+            <label className="form__label" htmlFor="password">
+              Password
+            </label>
             <input
               className="form__input"
               id="password"

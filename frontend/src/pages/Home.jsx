@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTours } from '../services/api';
+import { fetchTours } from '../services/tourServices.js';
 import TourCard from '../components/TourCard';
 
 const Home = () => {
