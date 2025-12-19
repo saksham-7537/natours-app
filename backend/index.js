@@ -9,26 +9,31 @@ import globalErrorMiddleware from './controllers/errController.js';
 
 const app = express();
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  process.env.CLIENT_URL,
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (Postman, mobile apps)
+    origin: (origin, callback) => {
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
+      const allowedPatterns = [
+        /^http:\/\/localhost:5173$/,
+        /^https:\/\/.*\.vercel\.app$/,
+      ];
+
+      const isAllowed = allowedPatterns.some((pattern) =>
+        pattern.test(origin)
+      );
+
+      if (isAllowed) {
         return callback(null, true);
       }
 
-      callback(new Error('Not allowed by CORS'));
+      console.error('CORS BLOCKED ORIGIN:', origin);
+      return callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
   })
 );
+
 
 
 // importing routers
