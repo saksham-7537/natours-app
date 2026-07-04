@@ -1,100 +1,259 @@
-Here is the updated `README.md` with a dedicated, professional section for your application screenshots. I have set it up using a grid-style markdown table, which looks very clean and impressive to recruiters when filled with images.
+# Natours
+
+A modern full-stack tour booking platform built with **React, Node.js, Express, and MongoDB**. Natours allows users to explore curated travel destinations, securely authenticate, manage their profiles, and book tours through an intuitive and responsive interface.
+
+This project is based on the concepts from Jonas Schmedtmann's Node.js course but has been extended with a completely separate React frontend, improved UI, additional features, and a modern development workflow.
 
 ---
 
-# Natours - Full-Stack Tour Booking Platform
+## Preview
 
-## Overview
+### Home Page
 
-Natours is a robust, full-stack web application designed for browsing and booking modern travel experiences. Built with the MERN stack, the application emphasizes secure user authentication, responsive design, and seamless interactive map integrations. The architecture follows modern development practices, prioritizing performance, scalability, and security to deliver a professional, production-ready user experience.
+<p align="center">
+  <img src="assets/home.png" alt="Home Page" width="900">
+</p>
 
-## Live Application
+---
 
-**View Live Demo:** [https://natours-app-mocha.vercel.app](https://www.google.com/search?q=https://natours-app-mocha.vercel.app)
+### Tour Details
 
-## Application Previews
+<p align="center">
+  <img src="assets/tour-details.png" alt="Tour Details" width="900">
+</p>
 
-> **Note to Developer:** Replace `insert-image-path-here.png` with the actual paths or URLs to your screenshots.
+---
 
-| Home Page & Tour Catalog | Interactive Leaflet Map |
-| --- | --- |
-|  |  |
+### Authentication
 
-| Tour Details & Booking | User Dashboard & Profile |
-| --- | --- |
-|  |  |
+<p align="center">
+  <img src="assets/login.png" alt="Login" width="440">
+  <img src="assets/signup.png" alt="Signup" width="440">
+</p>
 
-## Technology Stack
+---
 
-### Frontend
+### User Dashboard
 
-* **Framework:** React (Vite)
-* **State Management:** Zustand
-* **Data Fetching:** Axios
-* **Mapping:** Leaflet.js
-* **Styling:** CSS (BEM Architecture)
+<p align="center">
+  <img src="assets/dashboard.png" alt="Dashboard" width="900">
+</p>
+
+---
+
+### Interactive Maps
+
+<p align="center">
+  <img src="assets/map.png" alt="Map" width="900">
+</p>
+
+---
+
+### Booking & Payment
+
+<p align="center">
+  <img src="assets/payment.png" alt="Payment" width="900">
+</p>
+
+---
+
+## Features
+
+### User Features
+
+- Browse available tours
+- Detailed tour pages
+- Interactive maps
+- Secure authentication
+- JWT-based authorization
+- Profile management
+- Upload profile photo
+- View booked tours
+- Book tours online
+- Responsive UI
+
+### Admin Features
+
+- Manage tours
+- Manage users
+- Role-based authorization
+- CRUD operations
+- Image upload and processing
+
+### Backend Features
+
+- RESTful API
+- JWT Authentication
+- Password hashing
+- Cookie-based sessions
+- Global error handling
+- Request validation
+- Image optimization using Sharp
+- MongoDB aggregation pipelines
+- Advanced API filtering
+
+---
+
+## Tech Stack
+
+| Frontend | Backend | Database | Other |
+|-----------|----------|----------|-------|
+| React | Node.js | MongoDB | JWT |
+| React Router | Express.js | Mongoose | Multer |
+| Axios | REST API | MongoDB Atlas | Sharp |
+| CSS | MVC Architecture | | Leaflet |
+
+---
+
+## Project Structure
+
+```
+Natours
+│
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── hooks
+│   │   ├── context
+│   │   └── assets
+│
+├── server
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── utils
+│   └── config
+│
+└── README.md
+```
+
+---
+
+## API Highlights
+
+### Authentication
+
+```
+POST   /api/v1/users/signup
+POST   /api/v1/users/login
+GET    /api/v1/users/logout
+PATCH  /api/v1/users/updateMe
+PATCH  /api/v1/users/updateMyPassword
+```
+
+### Tours
+
+```
+GET    /api/v1/tours
+GET    /api/v1/tours/:id
+POST   /api/v1/tours
+PATCH  /api/v1/tours/:id
+DELETE /api/v1/tours/:id
+```
+
+### Reviews
+
+```
+GET    /api/v1/reviews
+POST   /api/v1/reviews
+PATCH  /api/v1/reviews/:id
+DELETE /api/v1/reviews/:id
+```
+
+### Bookings
+
+```
+POST   /api/v1/bookings/create-paypal-order
+POST   /api/v1/bookings/capture-paypal-order
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/yourusername/natours.git
+```
+
+Move into the project
+
+```bash
+cd natours
+```
 
 ### Backend
 
-* **Runtime / Framework:** Node.js, Express.js
-* **Database:** MongoDB & Mongoose
-* **Authentication:** JSON Web Tokens (JWT) with HTTP-only cookies
-* **Asset Management:** Multer & Sharp (Image processing)
-
-### Infrastructure
-
-* **Frontend Hosting:** Vercel
-* **Backend Hosting:** Render
-* **Database:** MongoDB Atlas
-
-## Core Features
-
-* **Dynamic Tour Catalog:** Search and explore tours with detailed itineraries, pricing, and difficulty ratings.
-* **Interactive Geolocation:** Utilizes Leaflet to render interactive maps with custom markers and responsive tour paths.
-* **Secure Authentication:** Implementation of a complete user lifecycle, including JWT-based login, protected routes, and persistent session management.
-* **Profile Management:** User dashboard supporting account updates, secure password changes, and profile photo uploads.
-* **Password Recovery:** Integrated flow for secure token-based password resets via email.
-
-## Security Engineering
-
-The backend is designed with a "security-first" approach to protect against common web vulnerabilities:
-
-* **Authentication Security:** Passwords are hashed using bcrypt; JWTs are stored in secure, HTTP-only cookies.
-* **Rate Limiting:** Protects against brute-force attacks and service abuse.
-* **Injection Defense:** Implementation of data sanitization to prevent NoSQL injection and XSS.
-* **Hardened Headers:** Integration of Helmet.js to manage security-focused HTTP headers.
-* **CORS:** Strictly configured Cross-Origin Resource Sharing for production environments.
-
-## Local Installation
-
-### 1. Clone the Repository
-
 ```bash
-git clone https://github.com/saksham-7537/natours-app.git
-cd natours-app
-
-```
-
-### 2. Backend Setup
-
-```bash
-cd backend
+cd server
 npm install
-
 ```
 
-*Create a `.env` file in the backend root and add your environment variables (e.g., `MONGO_URI`, `JWT_SECRET`, `PORT`).*
+Create a `.env` file
 
-```bash
-npm run start
+```env
+NODE_ENV=
+PORT=
 
+DATABASE=
+DATABASE_PASSWORD=
+
+JWT_SECRET=
+JWT_EXPIRES_IN=
+JWT_COOKIE_EXPIRES_IN=
+
+EMAIL_HOST=
+EMAIL_PORT=
+EMAIL_USERNAME=
+EMAIL_PASSWORD=
+
+PAYPAL_CLIENT_ID=
+PAYPAL_CLIENT_SECRET=
 ```
 
-### 3. Frontend Setup
+Run the backend
 
 ```bash
-cd ../frontend
+npm run dev
+```
+
+---
+
+### Frontend
+
+```bash
+cd client
 npm install
 npm run dev
-
 ```
+
+---
+
+## Performance
+
+- Responsive across desktop and mobile devices
+- Optimized image processing with Sharp
+- Secure authentication using JWT
+- RESTful API architecture
+- Modular and scalable folder structure
+
+---
+
+## Future Improvements
+
+- Stripe integration
+- Wishlist functionality
+- Tour recommendations
+- Email verification
+- Forgot password via OTP
+- Search and filtering enhancements
+- Admin analytics dashboard
+- Progressive Web App support
+- Add badges (GitHub stars, license, React, Node.js, MongoDB, Express) below the title.
+- Include an **Architecture** diagram showing React → Express → MongoDB → PayPal → Leaflet.
+- Add a short **"Why this project?"** section explaining the motivation and improvements over the original course project. This gives recruiters context and differentiates your repository.
