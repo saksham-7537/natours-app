@@ -1,90 +1,75 @@
-# 🌍 Natours – Full Stack Tour Booking Application
+# Natours - Full-Stack Tour Booking Platform
 
-Natours is a **full-stack MERN application** that allows users to explore tours, view locations on interactive maps, manage accounts, and securely authenticate.  
-The project follows **modern web development practices** and is fully deployed.
+## Overview
 
----
+Natours is a robust, full-stack web application designed for browsing and booking modern travel experiences. Built with the MERN stack, the application emphasizes secure user authentication, responsive design, and seamless interactive map integrations. The architecture follows modern development practices, prioritizing performance, scalability, and security to deliver a professional, production-ready user experience.
 
-## 🚀 Live Demo
-- https://natours-app-mocha.vercel.app  
-
-
----
-
-## 🛠 Tech Stack
+## Technology Stack
 
 ### Frontend
-- **React (Vite)**
-- **Zustand** – state management
-- **Axios** – API communication
-- **Leaflet** – interactive maps
-- **CSS (BEM architecture)**
+
+* **Framework:** React (Vite)
+* **State Management:** Zustand
+* **Data Fetching:** Axios
+* **Mapping:** Leaflet.js
+* **Styling:** CSS (BEM Architecture)
 
 ### Backend
-- **Node.js**
-- **Express.js**
-- **MongoDB + Mongoose**
-- **JWT Authentication**
-- **Multer & Sharp** – image uploads
-- **Helmet, Rate Limiting, Data Sanitization**
 
-### Deployment
-- **Frontend**: Vercel
-- **Backend**: Render
-- **Database**: MongoDB Atlas
+* **Runtime / Framework:** Node.js, Express.js
+* **Database:** MongoDB & Mongoose
+* **Authentication:** JSON Web Tokens (JWT) with HTTP-only cookies
+* **Asset Management:** Multer & Sharp (Image processing)
 
----
+### Infrastructure
 
-## ✨ Core Features
+* **Frontend Hosting:** Vercel
+* **Backend Hosting:** Render
+* **Database:** MongoDB Atlas
 
-### 🌍 Tours
-- Browse all available tours
-- Detailed tour pages with:
-  - Duration, difficulty, price
-  - Description & highlights
-  - Interactive map with tour route
+## Core Features
 
-### 🗺 Interactive Maps
-- Tour locations rendered using **Leaflet**
-- Custom markers & route paths
-- Smooth zoom & pan animations
-- Automatically fits bounds to tour route
+* **Dynamic Tour Catalog:** Search and explore tours with detailed itineraries, pricing, and difficulty ratings.
+* **Interactive Geolocation:** Utilizes Leaflet to render interactive maps with custom markers and responsive tour paths.
+* **Secure Authentication:** Implementation of a complete user lifecycle, including JWT-based login, protected routes, and persistent session management.
+* **Profile Management:** User dashboard supporting account updates, secure password changes, and profile photo uploads.
+* **Password Recovery:** Integrated flow for secure token-based password resets via email.
 
----
+## Security Engineering
 
-## 🔐 Authentication & Authorization
+The backend is designed with a "security-first" approach to protect against common web vulnerabilities:
 
-- User **signup & login**
-- **JWT-based authentication**
-- Secure cookies (`httpOnly`, `sameSite`, `secure`)
-- Persistent login across refresh
-- Protected routes
+* **Authentication Security:** Passwords are hashed using bcrypt; JWTs are stored in secure, HTTP-only cookies.
+* **Rate Limiting:** Protects against brute-force attacks and service abuse.
+* **Injection Defense:** Implementation of data sanitization to prevent NoSQL injection and XSS.
+* **Hardened Headers:** Integration of Helmet.js to manage security-focused HTTP headers.
+* **CORS:** Strictly configured Cross-Origin Resource Sharing for production environments.
 
----
+## Local Installation
 
-## 👤 User Account Management
+### 1. Clone the Repository
 
-- User dashboard
-- Update name & email
-- Upload & update profile photo
-- Change password securely
-- Logout functionality
+```bash
+git clone https://github.com/saksham-7537/natours-app.git
+cd natours-app
 
----
+```
 
-## 🔑 Password Recovery
+### 2. Backend Setup
 
-- Forgot password flow
-- Email-based password reset link
-- Secure token-based password reset
+```bash
+cd backend
+npm install
+# Create a .env file with your MONGO_URI, JWT_SECRET, and PORT
+npm run start
 
----
+```
 
-## 🛡 Security Features
+### 3. Frontend Setup
 
-- Password hashing with **bcrypt**
-- **Rate limiting** against brute force attacks
-- **NoSQL injection protection**
-- **XSS protection**
-- Secure HTTP headers via **Helmet**
-- Proper CORS configuration for production
+```bash
+cd ../frontend
+npm install
+npm run dev
+
+```
