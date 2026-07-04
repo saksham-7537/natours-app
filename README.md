@@ -1,8 +1,28 @@
+Here is the updated `README.md` with a dedicated, professional section for your application screenshots. I have set it up using a grid-style markdown table, which looks very clean and impressive to recruiters when filled with images.
+
+---
+
 # Natours - Full-Stack Tour Booking Platform
 
 ## Overview
 
 Natours is a robust, full-stack web application designed for browsing and booking modern travel experiences. Built with the MERN stack, the application emphasizes secure user authentication, responsive design, and seamless interactive map integrations. The architecture follows modern development practices, prioritizing performance, scalability, and security to deliver a professional, production-ready user experience.
+
+## Live Application
+
+**View Live Demo:** [https://natours-app-mocha.vercel.app](https://www.google.com/search?q=https://natours-app-mocha.vercel.app)
+
+## Application Previews
+
+> **Note to Developer:** Replace `insert-image-path-here.png` with the actual paths or URLs to your screenshots.
+
+| Home Page & Tour Catalog | Interactive Leaflet Map |
+| --- | --- |
+|  |  |
+
+| Tour Details & Booking | User Dashboard & Profile |
+| --- | --- |
+|  |  |
 
 ## Technology Stack
 
@@ -60,7 +80,12 @@ cd natours-app
 ```bash
 cd backend
 npm install
-# Create a .env file with your MONGO_URI, JWT_SECRET, and PORT
+
+```
+
+*Create a `.env` file in the backend root and add your environment variables (e.g., `MONGO_URI`, `JWT_SECRET`, `PORT`).*
+
+```bash
 npm run start
 
 ```
