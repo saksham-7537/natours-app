@@ -28,7 +28,6 @@ This project is based on the concepts from Jonas Schmedtmann's Node.js course bu
 
 <p align="center">
   <img src="assets/login.png" alt="Login" width="440">
-  <img src="assets/signup.png" alt="Signup" width="440">
 </p>
 
 ---
@@ -37,14 +36,6 @@ This project is based on the concepts from Jonas Schmedtmann's Node.js course bu
 
 <p align="center">
   <img src="assets/dashboard.png" alt="Dashboard" width="900">
-</p>
-
----
-
-### Interactive Maps
-
-<p align="center">
-  <img src="assets/map.png" alt="Map" width="900">
 </p>
 
 ---
