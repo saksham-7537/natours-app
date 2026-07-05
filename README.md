@@ -27,7 +27,7 @@ This project is based on the concepts from Jonas Schmedtmann's Node.js course bu
 ### Authentication
 
 <p align="center">
-  <img src="assets/login.png" alt="Login" width="440">
+  <img src="assets/login.png" alt="Login" width="900">
 </p>
 
 ---
